@@ -84,7 +84,9 @@ CSF extends CoreScreenStateful> extends State<CSF>
               textScaleFactor: _textScaleFactor),
         ));
     return ProgressHUD(
-      child: scaffold,
+      child: Builder(
+        builder: (context) => scaffold,
+      ),
       indicatorColor: CoreColors.progressWidgetColor,
       backgroundColor: CoreColors.loadingBoxBackgroundColor,
       barrierColor: CoreColors.loadingBackgroundColor,
