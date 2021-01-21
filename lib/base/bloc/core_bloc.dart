@@ -1,18 +1,18 @@
-import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:fk_core_package/utitlies/type_def.dart';
 import 'package:meta/meta.dart';
 
-part 'core_event.dart';
-part 'core_state.dart';
+part 'core_bloc_event.dart';
+part 'core_bloc_state.dart';
 
-class CoreBloc extends Bloc<CoreEvent, CoreState> {
-  CoreBloc() : super(CoreInitial());
+abstract class CoreBloc<CE extends CoreBlocEvent, CS extends CoreBlocState, CIS extends CoreBlocInitialState>
+    extends Bloc<CoreBlocEvent, CoreBlocState> {
+  CoreBloc(this._initStateCreator) : super(_initStateCreator());
 
-  @override
-  Stream<CoreState> mapEventToState(
-    CoreEvent event,
-  ) async* {
-    // TODO: implement mapEventToState
-  }
+  String get busTag => this.runtimeType.toString();
+
+  ItemCreator<CIS> _initStateCreator;
+
+
 }

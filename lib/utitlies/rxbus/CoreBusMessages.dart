@@ -10,11 +10,6 @@ class ShowToastMessage {
   ShowToastMessage(this.toastText);
 }
 
-class ShowSnackMessage {
-  String message;
-  ShowSnackMessage(this.message);
-}
-
 class ShowCodeError {
   int errorCode;
   ShowCodeError({this.errorCode});

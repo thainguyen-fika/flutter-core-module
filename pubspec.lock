@@ -146,13 +146,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.1.1"
-  flutter_spinkit:
+  flutter_device_type:
     dependency: "direct main"
     description:
-      name: flutter_spinkit
+      name: flutter_device_type
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.1.2+1"
+    version: "0.3.2"
+  flutter_progress_hud:
+    dependency: "direct main"
+    description:
+      name: flutter_progress_hud
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.3"
   flutter_web_plugins:
     dependency: transitive
     description: flutter

@@ -7,14 +7,14 @@ class CoreColors {
   static const Color Orange_28 = const Color(0xFFF05A28);
   static const Color Gray_d3 = const Color(0xB3d3d3d3);
   static const Color Blue_Accent = Colors.blueAccent;
-  static const Color Transparent = const Color(0x00FFFFFF);
+  static const Color transparent = const Color(0x00FFFFFF);
 
   // //// Text
   static Color highlightColor = Blue_Accent;
   static Color linkTextColor = Blue_Accent;
   static Color errorTextColor = Blue_Accent;
   // //// loading
-  static Color loadingColor = highlightColor;
+  static Color progressWidgetColor = highlightColor;
   static Color loadingBoxBackgroundColor = White;
   static Color loadingBackgroundColor = Black_12_a;
 

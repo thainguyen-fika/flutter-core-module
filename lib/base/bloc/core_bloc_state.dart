@@ -1,6 +1,6 @@
 part of 'core_bloc.dart';
 
 @immutable
-abstract class CoreState {}
+abstract class CoreBlocState {}
 
-class CoreInitialState extends CoreState {}
+class CoreBlocInitialState extends CoreBlocState {}

@@ -128,10 +128,16 @@
       "languageVersion": "2.6"
     },
     {
-      "name": "flutter_spinkit",
-      "rootUri": "file:///Users/tranha/.pub-cache/hosted/pub.dartlang.org/flutter_spinkit-4.1.2+1",
+      "name": "flutter_device_type",
+      "rootUri": "file:///Users/tranha/.pub-cache/hosted/pub.dartlang.org/flutter_device_type-0.3.2",
       "packageUri": "lib/",
-      "languageVersion": "2.5"
+      "languageVersion": "2.0"
+    },
+    {
+      "name": "flutter_progress_hud",
+      "rootUri": "file:///Users/tranha/.pub-cache/hosted/pub.dartlang.org/flutter_progress_hud-1.0.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
     },
     {
       "name": "flutter_web_plugins",
@@ -320,7 +326,7 @@
       "languageVersion": "2.8"
     }
   ],
-  "generated": "2021-01-21T02:31:16.823324Z",
+  "generated": "2021-01-21T07:20:11.356588Z",
   "generator": "pub",
   "generatorVersion": "2.10.4"
 }
