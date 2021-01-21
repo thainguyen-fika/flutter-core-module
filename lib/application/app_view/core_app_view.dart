@@ -1,6 +1,4 @@
 import 'package:after_layout/after_layout.dart';
-import 'package:fk_core_package/routes/CoreRoutes.dart';
-import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -20,6 +18,11 @@ abstract class CoreAppViewState<CAV extends CoreAppView> extends State<CAV>
   List<NavigatorObserver> initNavigatorObserver();
 
   Widget Function(BuildContext context, Widget child) initTransitionBuilder;
+
+  Route onGenerateRoute(RouteSettings settings);
+
+  GlobalKey<NavigatorState> navigatorGlobalKey;
+
 
   ThemeData initThemeData(BuildContext context) {
     return ThemeData(primarySwatch: Colors.blue);
@@ -48,8 +51,8 @@ abstract class CoreAppViewState<CAV extends CoreAppView> extends State<CAV>
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: initThemeData(context),
-      navigatorKey: CoreRouter.navigatorKey,
-      onGenerateRoute: _getRoute,
+      navigatorKey: navigatorGlobalKey,
+      onGenerateRoute: onGenerateRoute,
       localizationsDelegates: initLocalizationsDelegate(),
       supportedLocales: initSupportLocales(),
       locale: defaultLocale(),
@@ -64,9 +67,4 @@ abstract class CoreAppViewState<CAV extends CoreAppView> extends State<CAV>
     super.dispose();
   }
 
-  Route _getRoute(RouteSettings settings) {
-    RouteMatch match = CoreRouter.router
-        .matchRoute(context, settings.name, routeSettings: settings);
-    return match.route;
-  }
 }
