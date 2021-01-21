@@ -1,5 +1,5 @@
 import 'package:after_layout/after_layout.dart';
-import 'package:fk_core_package/application/routes/CoreRoutes.dart';
+import 'package:fk_core_package/routes/CoreRoutes.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -10,7 +10,7 @@ abstract class CoreAppView extends StatefulWidget {
 
 }
 
-abstract class CoreApplicationState<CAV extends CoreAppView> extends State<CAV>
+abstract class CoreAppViewState<CAV extends CoreAppView> extends State<CAV>
     with AfterLayoutMixin<CAV>, WidgetsBindingObserver {
 
   /// Methods
