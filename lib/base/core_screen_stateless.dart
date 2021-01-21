@@ -144,5 +144,5 @@ abstract class CoreScreenStateless<CE extends CoreBlocEvent,
 
   }
 
-  void initWithContext(BuildContext context);
+  void initWithContext(BuildContext context) {}
 }

@@ -153,5 +153,5 @@ CSF extends CoreScreenStateful> extends State<CSF>
     return null;
   }
 
-  void initWithContext(BuildContext context);
+  void initWithContext(BuildContext context) {}
 }
