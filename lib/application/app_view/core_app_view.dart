@@ -19,7 +19,7 @@ abstract class CoreAppViewState<CAV extends CoreAppView> extends State<CAV>
 
   List<NavigatorObserver> initNavigatorObserver();
 
-  TransitionBuilder initTransitionBuilder();
+  Widget Function(BuildContext context, Widget child) initTransitionBuilder;
 
   ThemeData initThemeData(BuildContext context) {
     return ThemeData(primarySwatch: Colors.blue);
@@ -54,7 +54,7 @@ abstract class CoreAppViewState<CAV extends CoreAppView> extends State<CAV>
       supportedLocales: initSupportLocales(),
       locale: defaultLocale(),
       themeMode: initThemeMode(),
-      builder: initTransitionBuilder(),
+      builder: initTransitionBuilder,
     );
   }
 
