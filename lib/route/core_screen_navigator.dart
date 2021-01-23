@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'CoreRoutes.dart';
+import 'core_routes.dart';
 
 class CoreScreenNavigator {
   void pop({bool returnResult = false}) {

@@ -1,6 +1,6 @@
 import 'package:fk_core_package/base/bloc/core_bloc.dart';
-import 'package:fk_core_package/resources/CoreColors.dart';
-import 'package:fk_core_package/utitlies/rxbus/CoreBusMessages.dart';
+import 'package:fk_core_package/resources/core_colors.dart';
+import 'package:fk_core_package/utitlies/rxbus/core_bus_messages.dart';
 import 'package:fk_core_package/utitlies/rxbus/rxbus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
