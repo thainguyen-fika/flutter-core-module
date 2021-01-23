@@ -1,6 +1,5 @@
 
 import 'package:bloc/bloc.dart';
-import 'package:fk_core_package/utitlies/type_def.dart';
 import 'package:meta/meta.dart';
 
 part 'core_bloc_event.dart';
