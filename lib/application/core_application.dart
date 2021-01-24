@@ -17,6 +17,9 @@ abstract class CoreApplicationState<CA extends CoreApplication>
 
     @override
   void afterFirstLayout(BuildContext context) {
+      initComponents(context);
   }
+
+  void initComponents(BuildContext context) {}
 
 }

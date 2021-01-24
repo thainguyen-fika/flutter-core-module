@@ -40,7 +40,7 @@ abstract class CoreScreenMixin<CB extends CoreBloc> {
     _textScaleFactor = scaleFactor;
   }
 
-  void initWithContext(BuildContext context);
+  void initWithContext(BuildContext context) {}
 
   void registerRxBus() {
     RxBus.register<ShowProgressHUB>(tag: this.bloc.busTag).listen((message) {

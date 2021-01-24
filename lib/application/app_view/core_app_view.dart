@@ -1,4 +1,6 @@
 import 'package:after_layout/after_layout.dart';
+import 'package:fk_core_package/route/core_routes.dart';
+import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -19,9 +21,13 @@ abstract class CoreAppViewState<CAV extends CoreAppView> extends State<CAV>
 
   Widget Function(BuildContext context, Widget child) initTransitionBuilder;
 
-  Route onGenerateRoute(RouteSettings settings);
+  Route onGenerateRoute(RouteSettings settings) {
+    RouteMatch match =
+    CoreRouter.router.matchRoute(context, settings.name, routeSettings: settings);
+    return match.route;
+  }
 
-  GlobalKey<NavigatorState> navigatorGlobalKey;
+  GlobalKey<NavigatorState> get navigatorGlobalKey => CoreRouter.navigatorKey;
 
 
   ThemeData initThemeData(BuildContext context) {
