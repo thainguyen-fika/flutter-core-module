@@ -11,6 +11,7 @@ abstract class CoreScreenStateless<CE extends CoreBlocEvent,
     CS extends CoreBlocState, CB extends CoreBloc> extends StatelessWidget with CoreScreenMixin<CB> {
   CoreScreenStateless(this._blocCreator, {Key key}) : super(key: key) {
     bloc = _blocCreator();
+    bloc.onReady();
   }
 
   ItemCreator<CB> _blocCreator;

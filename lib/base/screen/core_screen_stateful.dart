@@ -2,12 +2,14 @@ import 'package:after_layout/after_layout.dart';
 import 'package:fk_core_package/utitlies/type_def.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
+import 'package:flutter_progress_hud/flutter_progress_hud.dart';
 import '../bloc/core_bloc.dart';
 import 'core_screen_mixin.dart';
 
-abstract class CoreScreenStateful extends StatefulWidget {
+abstract class CoreScreenStateful<CE extends CoreBlocEvent,
+    CS extends CoreBlocState, CB extends CoreBloc> extends StatefulWidget {
   const CoreScreenStateful({Key key}) : super(key: key);
+
 }
 
 abstract class CoreScreenState<
@@ -16,11 +18,11 @@ abstract class CoreScreenState<
         CB extends CoreBloc,
         CSF extends CoreScreenStateful> extends State<CSF>
     with AfterLayoutMixin<CSF>, CoreScreenMixin<CB> {
-
   ItemCreator<CB> _blocCreator;
 
   CoreScreenState(this._blocCreator) {
     bloc = _blocCreator();
+    bloc.onReady();
   }
 
   @override
@@ -35,4 +37,19 @@ abstract class CoreScreenState<
     return buildContentLayout(context);
   }
 
+  void showProgressHUD(bool shouldShow) {
+    Future.delayed(Duration.zero, () {
+      isLoading = shouldShow;
+      ProgressHUD.of(context).dismiss();
+      if (isLoading) {
+        ProgressHUD.of(context).show();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    bloc.onStatefulDispose();
+    super.dispose();
+  }
 }
