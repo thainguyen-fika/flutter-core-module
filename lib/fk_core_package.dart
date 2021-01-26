@@ -17,3 +17,4 @@ export 'route/core_routes.dart';
 export 'route/core_screen_navigator.dart';
 ///
 export 'utitlies/rxbus/rxbus.dart';
+export 'utitlies/core_string_utils.dart';
