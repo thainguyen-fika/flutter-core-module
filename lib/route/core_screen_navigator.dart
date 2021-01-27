@@ -16,7 +16,7 @@ class CoreScreenNavigator {
         .popUntil(ModalRoute.withName(routePath));
   }
 
-  void pushScreenIfUnableToPop(String routePath) {
+  void pushScreenIfUnableToPop(BuildContext context, String routePath) {
     var isRouteExisted = false;
     CoreRouter.navigatorKey.currentState
         .popUntil((route) {
@@ -28,11 +28,11 @@ class CoreScreenNavigator {
     if (isRouteExisted) {
       this.popUntil(routePath);
     } else {
-      this.pushScreen(routePath);
+      this.pushScreen(context, routePath);
     }
   }
 
-  Future<T> pushScreen<T extends Object>(String serviceName,
+  Future<T> pushScreen<T extends Object>(BuildContext context, String serviceName,
       {List<dynamic> params,
         bool isReplace = false,
         bool isRemoveStack = false,
@@ -50,19 +50,20 @@ class CoreScreenNavigator {
         routePath = "$routePath/$encodeParams";
       });
     }
-    return _handlePushScreenWithoutContext(routePath,
+    return _handlePushScreenWithContext(context, routePath,
         replace: isReplace, clearStack: isRemoveStack, isPop: isPop);
   }
 
-  Future _handlePushScreenWithoutContext(String path,
+  Future _handlePushScreenWithContext(BuildContext context, String path,
       {bool replace = false,
         bool isPop = false,
         bool clearStack = false,
         TransitionType transition,
         Duration transitionDuration = const Duration(milliseconds: 250),
         RouteTransitionsBuilder transitionBuilder}) {
+    final routeContext = context ?? CoreApplication.applicationContext;
     RouteMatch routeMatch = CoreRouter.router.matchRoute(
-        CoreApplication.applicationContext, path,
+        routeContext, path,
         transitionType: transition,
         transitionsBuilder: transitionBuilder,
         transitionDuration: transitionDuration);
