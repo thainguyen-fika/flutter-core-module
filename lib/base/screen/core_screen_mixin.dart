@@ -18,6 +18,9 @@ abstract class CoreScreenMixin<CB extends CoreBloc> {
   @protected
   CB bloc;
 
+  @protected
+  Color _backgroundColor = CoreColors.White;
+
   double get textScaleFactor => this._textScaleFactor;
 
   bool get isLargeScreen => this._isLargeScreen;
@@ -100,6 +103,7 @@ abstract class CoreScreenMixin<CB extends CoreBloc> {
     Widget scaffold = Material(
         child: MediaQuery(
       child: Scaffold(
+        backgroundColor: _backgroundColor,
         resizeToAvoidBottomInset: false,
         key: scaffoldToastKey,
         appBar: createAppBarContent(context),
