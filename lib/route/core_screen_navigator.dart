@@ -18,8 +18,7 @@ class CoreScreenNavigator {
 
   void pushScreenIfUnableToPop(BuildContext context, String routePath) {
     var isRouteExisted = false;
-    CoreRouter.navigatorKey.currentState
-        .popUntil((route) {
+    CoreRouter.navigatorKey.currentState.popUntil((route) {
       if (routePath == route.settings.name) {
         isRouteExisted = true;
       }
@@ -32,11 +31,12 @@ class CoreScreenNavigator {
     }
   }
 
-  Future<T> pushScreen<T extends Object>(BuildContext context, String serviceName,
+  Future<T> pushScreen<T extends Object>(
+      BuildContext context, String serviceName,
       {List<dynamic> params,
-        bool isReplace = false,
-        bool isRemoveStack = false,
-        bool isPop = false}) {
+      bool isReplace = false,
+      bool isRemoveStack = false,
+      bool isPop = false}) {
     var routePath = serviceName;
     if (params != null && params.length > 0) {
       params.forEach((item) {
@@ -56,14 +56,13 @@ class CoreScreenNavigator {
 
   Future _handlePushScreenWithContext(BuildContext context, String path,
       {bool replace = false,
-        bool isPop = false,
-        bool clearStack = false,
-        TransitionType transition,
-        Duration transitionDuration = const Duration(milliseconds: 250),
-        RouteTransitionsBuilder transitionBuilder}) {
+      bool isPop = false,
+      bool clearStack = false,
+      TransitionType transition,
+      Duration transitionDuration = const Duration(milliseconds: 250),
+      RouteTransitionsBuilder transitionBuilder}) {
     final routeContext = context ?? CoreApplication.applicationContext;
-    RouteMatch routeMatch = CoreRouter.router.matchRoute(
-        routeContext, path,
+    RouteMatch routeMatch = CoreRouter.router.matchRoute(routeContext, path,
         transitionType: transition,
         transitionsBuilder: transitionBuilder,
         transitionDuration: transitionDuration);
@@ -94,5 +93,25 @@ class CoreScreenNavigator {
       }
     }
     return future;
+  }
+
+  Future pushScreenWithArguments<T>(
+      BuildContext context, String routePath, T arguments,
+      {bool replace = false,
+      bool clearStack = false,
+      bool maintainState = true,
+      bool rootNavigator = false,
+      TransitionType transition,
+      Duration transitionDuration,
+      RouteTransitionsBuilder transitionBuilder}) {
+    return FluroRouter.appRouter.navigateTo(context, routePath,
+        routeSettings: RouteSettings(arguments: arguments),
+        replace: replace,
+        clearStack: clearStack,
+        maintainState: maintainState,
+        rootNavigator: rootNavigator,
+        transition: transition,
+        transitionDuration: transitionDuration,
+        transitionBuilder: transitionBuilder);
   }
 }
