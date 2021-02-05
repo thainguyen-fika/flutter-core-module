@@ -25,10 +25,26 @@ abstract class CoreScreenState<
     bloc.onReady();
   }
 
+  bool haveInitialized = false;
+
+
+  void initComponents(BuildContext context) {
+    // any related to context should be init here
+    if (!haveInitialized) {
+      initOrientationMode(context);
+      initWithContext(context);
+      haveInitialized = true;
+    }
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    initComponents(context);
+  }
+
   @override
   void afterFirstLayout(BuildContext context) {
-    this.initWithContext(context);
-    initOrientationMode(context);
     registerRxBus();
   }
 
